@@ -1,1 +1,4 @@
-da
+WHAT IS NEW
+Od sada mozete skidati pesme iz bilo koje plejliste
+
+Bug fixes
