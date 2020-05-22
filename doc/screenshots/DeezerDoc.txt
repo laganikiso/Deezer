@@ -1,1 +1,46 @@
-da
+Koristim: XML file storing, Kompozicije, Liste, Forme, BindingSource
+
+Klasa Pesma:
+-ima polja za duzinu pesme, za naziv pesme, za izvodjaca pesme(kompozicija, klasu Izvodjac cu spomenuti kasnije) i za zanr pesme
+-konstruktore sa i bez parametara
+
+Klasa Izovdjac:
+-Izvodjac ima svoje umetnicko ime i broj fanova
+-takodje dva kostruktora, sa i bez parametara
+-kao sto se gore vidi, pojavljuje se u klasi Pesma
+
+Klasa Album:
+-polje za naziv albuma i drugo je lista pesama
+-takodje dva kostruktora, sa i bez parametara
+
+Prelazimo na forme
+
+Forma FrmDeezerHome:
+-glavna forma
+-na njoj se nalaze: textbox(tbSearch) uz pomocu koga mozemo da pretrazujemo pesme iz listbox-a(lbDeezerHome),  kao sto rekoh, listbox u kome se nalaze sve pesme, button play za pustanje muzike koja je selektovana u listbox-u, button pause koji pauzira muziku koja se trenutno reprodukuje, button download koji dodaje sliku u istoimeni plejlistu, button add favourite koji dodaje pesmu u plejlistu favourite i na samom kraju button serialize koji sluzi da spremimo sve objekte, odnosno serijalizujemo ih, u xml fajl koji se zove mojxml.xml
+-pored navedenih stvari, na dnu forme se nalaze dva button music i favourite koja otvaraju pojedinacno nove forme koje cu kasniije opisati, sta koja radi, sta ima itd..
+-u FrmDeezerHome.cs su naravno omogucene funkcionalnosti svih gore navedenih stvari koje se nalaze na formi
+-prosledi u forme FrmMusic i Favourite listu svih pesama, listu skinutih pesma i listu omiljenih pesama, samo u Favourites prosledi i listu albuma
+
+Forma FrmMusic:
+-nije posebno kompleksna
+-sadrzi dosta button-a i svaki pojedinacno otvara novu formu, opisacu kasnije
+-svaki button reprezentuje odredjeni zanr
+-u formu FrmMusicOptions prosledi se bindingsource, skinute pesme i omiljene pesme
+
+Forma FrmMusicOptions:
+-forma na sebi sadrzi textbox(tbSearchMusic) koji ima identicnu funkcionalnost kao i textbox sa glavne forme samo sto se razlike listbox
+-kao sto rekoh, nalazi se i listbox koji prikazuje pesme sa istim zanrom, npr., ako je pritisnut na formi FrmMusic button rap, otvorice se ova forma i DataSource od listbox-a ce biti sve pesme koje imaju Zanr.RAP
+-generalno datasource uzima iz bindingsource-a
+-tako i za sve ostale zanrove
+-takodje i sa ove forme se mogu skidati pesme i ostalo, bas kao i u formama FrmDeezerHome i FrmMusic
+
+Forma Favourites:
+-jedina forma bez prefiksa Frm :)))), zasto, ne znam
+-slicna kao i forma FrmMusic, nista posebno kompleksna, ima button-e koji otvaraju, redom, skinute pesme, omiljene pesme, albume i izvodjace
+-prosledi u fromu FrmFavouriteOptions bindingsource ciji datasoure zavisi od button-a koji click-ovan, whichButton(tipa int) koji sluzi u formi FrmFaovouritesOptions da u zavisnosti od button-a koji je click-ovan postavi .DisplayMember za listbox
+-dalje u narednoj formi
+
+Form FrmFavouritesOptions:
+-u zavisnosti od button, u listbox-u se pojavljaju razlicite stvari, gore sam naveo sta se kad otvara
+-sto se tice skinutih pesama i omiljenih, ne bih dalje nista objasnjavao, a sto se tice albuma i izvodjaca, kad udjemo u albume, mozemo ih otvarati i videti koje se pesme nalaze u svakom albumu, a za izvodjace mozemo da vidimo sve njihove pesme
