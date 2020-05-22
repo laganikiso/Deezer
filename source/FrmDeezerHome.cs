@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +49,8 @@ namespace Deezer
         List<Pesma> download = new List<Pesma>();
         List<Pesma> favourtieMusic = new List<Pesma>();
         List<Album> listaAlbuma = new List<Album>();
+        SoundPlayer soundPlayer;
+        Pesma play = new Pesma();
         private void Init()
         {
             /*listaPesama.Add(rap1);
@@ -153,11 +155,13 @@ namespace Deezer
 
         private void BtnPlay_Click(object sender, EventArgs e)
         {
-            SoundPlayer soundPlayer = new SoundPlayer(@"C:\Users\Korisnik\Amuzika\1of1.wav");
+            play = (Pesma)bsDeezer.Current;
+            soundPlayer = new SoundPlayer(@"C:\Users\Korisnik\Amuzika\" + play.Naziv + ".wav");
             soundPlayer.Play();
         }
         private void BtnPause_Click(object sender, EventArgs e)
         {
+            soundPlayer.Stop();
         }
         private void FrmDeezerHome_Load(object sender, EventArgs e)
         {
